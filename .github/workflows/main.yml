@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - main
+      - malicious_branch
 
 permissions:
   id-token: write
@@ -25,4 +26,5 @@ jobs:
           role-session-name: "${{ env.session_name }}"
       - name: Test Credentials
         run: |
-          aws s3 ls
+          echo Deploy my malicious code!
+          aws s3 md malicious_bucket
