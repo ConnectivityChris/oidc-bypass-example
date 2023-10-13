@@ -1,0 +1,26 @@
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  assume_role_arn: "arn:aws:iam::111111111111:role/my-github-actions-role-test"
+  aws_region: "ap-southeast-2"
+  session_name: "deploy_example"
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.assume_role_arn }}
+          aws-region: ${{ env.aws_region }}
+          role-session-name: "${{ env.session_name }}"
