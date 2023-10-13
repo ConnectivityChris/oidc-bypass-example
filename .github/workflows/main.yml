@@ -28,4 +28,4 @@ jobs:
       - name: Test Credentials
         run: |
           echo Deploy my malicious code!
-          aws s3 md malicious_bucket
+          aws s3 mb malicious_bucket
