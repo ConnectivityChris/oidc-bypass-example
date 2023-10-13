@@ -28,4 +28,4 @@ jobs:
       - name: Test Credentials
         run: |
           echo Deploy my malicious code!
-          aws s3 mb s3://oidc_bypass_test_bucket
+          aws s3 mb s3://oidc-bypass-malicious-bucket
